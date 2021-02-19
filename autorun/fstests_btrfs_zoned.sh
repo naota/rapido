@@ -73,6 +73,10 @@ SCRATCH_DEV_POOL="/dev/nullb1"
 USE_KMEMLEAK=yes
 EOF
 
+if [ -n "$FSTESTS_RESULTS" ]; then
+	echo "RESULT_BASE=$FSTESTS_RESULTS" >> $cfg
+fi
+
 set +x
 
 echo "$filesystem filesystem ready for FSQA"
