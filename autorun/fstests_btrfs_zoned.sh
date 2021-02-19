@@ -71,6 +71,7 @@ TEST_DEV=/dev/nullb0
 SCRATCH_MNT=/mnt/scratch
 SCRATCH_DEV_POOL="/dev/nullb1"
 USE_KMEMLEAK=yes
+KEEP_DMESG=yes
 EOF
 
 if [ -n "$FSTESTS_RESULTS" ]; then
