@@ -18,6 +18,7 @@ RAPIDO_DIR="$(realpath -e ${0%/*})/.."
 _rt_require_dracut_args
 _rt_require_fstests
 _rt_require_btrfs_progs
+_rt_require_dracut_args "$RAPIDO_DIR/autorun/fstests_btrfs_zoned.sh"
 
 "$DRACUT" --install "tail blockdev ps rmdir resize dd grep find df sha256sum \
 		   strace mkfs  free wipefs mount \
@@ -37,9 +38,9 @@ _rt_require_btrfs_progs
 		   ${FSTESTS_SRC}/src/aio-dio-regress/*
 		   $BTRFS_PROGS_BINS" \
 	--include "$FSTESTS_SRC" "$FSTESTS_SRC" \
-	--include "$RAPIDO_DIR/autorun/fstests_btrfs_zoned.sh" "/.profile" \
 	--include "$RAPIDO_DIR/rapido.conf" "/rapido.conf" \
 	--include "$RAPIDO_DIR/vm_autorun.env" "/vm_autorun.env" \
+	$DRACUT_RAPIDO_INCLUDES \
 	--add-drivers "lzo lzo-rle btrfs raid6_pq \
 		       xxhash_generic null_blk" \
 	--modules "bash base terminfo" \
